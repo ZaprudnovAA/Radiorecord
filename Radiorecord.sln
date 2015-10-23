@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Radio", "Radio\Radio.csproj", "{FB1FD824-BFA9-42F6-8FC9-E3D47850C67D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Radiorecord", "Radiorecord\Radiorecord.csproj", "{FB1FD824-BFA9-42F6-8FC9-E3D47850C67D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
