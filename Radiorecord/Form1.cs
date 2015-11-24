@@ -157,16 +157,16 @@ namespace Radio
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Panel panel1 = new Panel() { Dock = DockStyle.Fill, Name = "panel1" };
+            Panel panel1 = new Panel() { Dock = DockStyle.Fill, Name = "panel1", BackColor = System.Drawing.Color.Transparent };
             this.Controls.Add(panel1);
 
             Label[] labels = new Label[vars.radio_label.Length - 1];
             for (int i = 0, j = 16; i < labels.Length; i++)
             {
                 if (i == 0)
-                    labels[i] = new Label() { Text = vars.radio_label[i], Name = "label " + i.ToString(), Location = new Point(13, j), Size = new Size(200, 23) };
+                    labels[i] = new Label() { Text = vars.radio_label[i], Name = "label " + i.ToString(), Location = new Point(13, j), Size = new Size(200, 23), BackColor = System.Drawing.Color.Transparent, Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))), ForeColor = System.Drawing.SystemColors.HotTrack };
                 else
-                    labels[i] = new Label() { Text = vars.radio_label[i], Name = "label " + i.ToString(), Location = new Point(13, i * 28 + j), Size = new Size(200, 23) };
+                    labels[i] = new Label() { Text = vars.radio_label[i], Name = "label " + i.ToString(), Location = new Point(13, i * 28 + j), Size = new Size(200, 23), BackColor = System.Drawing.Color.Transparent, Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))), ForeColor = System.Drawing.SystemColors.HotTrack };
             }
             this.Controls["panel1"].SuspendLayout();
             this.Controls["panel1"].Controls.AddRange(labels);
