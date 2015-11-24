@@ -9,11 +9,6 @@ namespace Radio
         System.Text.StringBuilder NotifyUserText = new System.Text.StringBuilder();
 
         public delegate void AddNotifyUserDelegate(string message, string type);
-        /// <summary>
-        /// Всплывашки в трее
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="type"></param>
         public void NotifyUser(string message, string type)
         {
             ToolTipIcon notifyIconType = new ToolTipIcon();
@@ -32,14 +27,10 @@ namespace Radio
                     notifyIconType = ToolTipIcon.Info;
                     break;
             }
-
             NotifyUserText.Append(string.Format("{0}\r\n", message));
-
             Program.F.notifyIcon1.Visible = true;
-            //Program.F.notifyIcon1.ShowBalloonTip(new mVAR().notifyTimeout, new mVAR().aName, message, notifyIconType);
             Program.F.notifyIcon1.ShowBalloonTip(new vars().notifyTimeout, new vars().aName, NotifyUserText.ToString(), notifyIconType);
             NotifyUserText.Clear();
-            //new System.Threading.Timer(TimerCallback, Program.F.notifyIcon1, mVAR.notifyTimeout, System.Threading.Timeout.Infinite);
         }
     }
 

@@ -25,10 +25,8 @@ namespace Radio
 
             this.KeyPreview = true;
 
-            //keybd_event(0x7a, 0x45, 0x1, (UIntPtr)0); //F11
             keybd_event(0x91, 0x45, 0x1, (UIntPtr)0); //Scroll Lock
 
-            //_hook = new Hook(0x7a); //F11
             _hook = new Hook(0x91); //Scroll Lock
             _hook.KeyPressed += new KeyPressEventHandler(_hook_KeyPressed);
             _hook.SetHook();
@@ -100,9 +98,7 @@ namespace Radio
                 for (int i = 1; i <= vars.radio_label.Length; i++)
                 {
                     if (i != 2)
-                    {
                         (Controls["button" + i.ToString()] as Button).Text = i != id ? "Play" : "Stop";
-                    }
                 }
             }
             else
@@ -122,27 +118,6 @@ namespace Radio
             btn.Text = btn.Text == "Play" ? "Stop" : "Play";
 
             StartPlay(Convert.ToInt32(btn.TabIndex), btn.Text);
-
-            /*if (btn.Name == "button1") StartPlay(1, btn.Text);
-            if (btn.Name == "button3") StartPlay(3, btn.Text);
-            if (btn.Name == "button4") StartPlay(4, btn.Text);
-            if (btn.Name == "button5") StartPlay(5, btn.Text);
-            if (btn.Name == "button6") StartPlay(6, btn.Text);
-            if (btn.Name == "button7") StartPlay(7, btn.Text);
-            if (btn.Name == "button8") StartPlay(8, btn.Text);
-            if (btn.Name == "button9") StartPlay(9, btn.Text);
-            if (btn.Name == "button10") StartPlay(10, btn.Text);
-            if (btn.Name == "button11") StartPlay(11, btn.Text);
-            if (btn.Name == "button12") StartPlay(12, btn.Text);
-            if (btn.Name == "button13") StartPlay(13, btn.Text);
-            if (btn.Name == "button14") StartPlay(14, btn.Text);
-            if (btn.Name == "button15") StartPlay(15, btn.Text);
-            if (btn.Name == "button16") StartPlay(16, btn.Text);
-            if (btn.Name == "button17") StartPlay(17, btn.Text);
-            if (btn.Name == "button18") StartPlay(18, btn.Text);
-            if (btn.Name == "button19") StartPlay(19, btn.Text);
-            if (btn.Name == "button20") StartPlay(20, btn.Text);
-            if (btn.Name == "button21") StartPlay(21, btn.Text);*/
         }
 
         private void StopPlayer(object sender, EventArgs e)
@@ -193,10 +168,7 @@ namespace Radio
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
-            {
                 MessageBox.Show("Пользоваться программой очень просто!\r\n- Выбрать понравившуюся станцию\r\n- Нажать кнопку проигрывания у выбранной станции\r\n- PROFIT\r\n\r\nГорячие клавиши:\r\nENTER\t- запуск первой станции\r\nESC\t- остановить проигрывание\r\nScrollLock\t- остановить/воспроизвести выбранную станцию", "микроHelp", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //button1.PerformClick();// имитируем нажатие button1
-            }
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
