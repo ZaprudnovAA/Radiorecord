@@ -4,14 +4,41 @@ namespace Radio
 {
     class vars
     {
-        //Глобальные переменные
         public static int WhoIsPlaying = 0;
-        public static string WhoIsPlaying_str = "Stop";
-        public string aName = "Radiorecord";
-        public int notifyTimeout = 30000;
-        public string tNotifInfo = "info";
-        public string tNotifWarn = "warning";
-        public string tNotifErro = "error";
+        public static string aName = "Radiorecord";
+        public static int notifyTimeout = 30000;
+        public static string tNotifInfo = "info";
+        public static string tNotifWarn = "warning";
+        public static string tNotifErro = "error";
+
+        public static string _url = "http://air2.radiorecord.ru:805/";
+        public static string[] _prefixes = new String[25] { "", "rr", "mix", "deep", "club", "fut", "tm", "chil", "mini", "ps", "rus", "vip", "sd90", "brks", "dub", "dc", "techno", "teo", "trap", "pump", "rock", "mdl", "gop", "yo", "rave" };
+        public static string[] _names = new String[25] {
+            ""
+            , "Radio Record"
+            , "Megamix"
+            , "Record Deep"
+            , "Record EDM"
+            , "Future House"
+            , "Trancemission"
+            , "Record Chill-Out"
+            , "Minimal/Tech"
+            , "Pirate Station"
+            , "Russian Mix"
+            , "Vip House"
+            , "Супердиско 90-х"
+            , "Record Breaks"
+            , "Record Dubstep"
+            , "Record Dancecore"
+            , "Record Techno"
+            , "Record Hardstyle"
+            , "Record Trap"
+            , "Pump"
+            , "Record Rock"
+            , "Медляк FM"
+            , "Гоп FM"
+            , "Yo!FM"
+            , "Rave FM" };
 
         public static string radio_url_bitrate(int bitrate, int id)
         {
@@ -30,56 +57,7 @@ namespace Radio
                     bitrate = 128;
                     break;
             }
-            return radio_url[id] + bitrate + ".m3u";
+            return string.Format("{0}{1}_{2}.m3u", _url, _prefixes[id], bitrate);
         }
-        public static string[] radio_url = new String[22]
-        {
-            "",
-            "http://online.radiorecord.ru:8102/brks_",
-            "",
-            "http://online.radiorecord.ru:8102/chil_",
-            "http://online.radiorecord.ru:8102/club_",
-            "http://online.radiorecord.ru:8102/dc_",
-            "http://online.radiorecord.ru:8102/deep_",
-            "http://online.radiorecord.ru:8102/dub_",
-            "http://online.radiorecord.ru:8102/gop_",
-            "http://online.radiorecord.ru:8102/mdl_",
-            "http://online.radiorecord.ru:8102/mix_",
-            "http://online.radiorecord.ru:8102/ps_",
-            "http://online.radiorecord.ru:8102/pump_",
-            "http://online.radiorecord.ru:8102/rock_",
-            "http://online.radiorecord.ru:8102/rus_",
-            "http://online.radiorecord.ru:8102/sd90_",
-            "http://online.radiorecord.ru:8102/techno_",
-            "http://online.radiorecord.ru:8102/teo_",
-            "http://online.radiorecord.ru:8102/tm_",
-            "http://online.radiorecord.ru:8102/trap_",
-            "http://online.radiorecord.ru:8102/vip_",
-            "http://online.radiorecord.ru:8102/yo_"
-        };
-        public static string[] radio_label = new String[21]
-        {
-            "Record Breaks",
-            "Record Chill-Out",
-            "Record Club",
-            "Record Dancecore",
-            "Record Deep",
-            "Record Dubstep",
-            "Гоп FM",
-            "Медляк FM",
-            "Megamix",
-            "Pirate Station",
-            "Pump'n'Klubb",
-            "Record Rock",
-            "Russian Mix",
-            "Супердискотека 90-х",
-            "Record Techno",
-            "Record Hardstyle",
-            "Trancemission",
-            "Record Trap",
-            "Vip Mix",
-            "Yo! FM",
-            ""
-        };
     }
 }

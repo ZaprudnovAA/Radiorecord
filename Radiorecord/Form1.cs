@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using WMPLib;
@@ -9,9 +8,10 @@ namespace Radio
     public partial class Form1 : Form
     {
         private Hook _hook;
+        private WindowsMediaPlayer wmPlayer = new WindowsMediaPlayer();
 
         [DllImport("user32.dll")]
-        static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
+        private static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
 
         public Form1()
         {
@@ -31,7 +31,8 @@ namespace Radio
             _hook.KeyPressed += new KeyPressEventHandler(_hook_KeyPressed);
             _hook.SetHook();
         }
-        void _hook_KeyPressed(object sender, KeyPressEventArgs e) //Событие нажатия клавиш
+
+        private void _hook_KeyPressed(object sender, KeyPressEventArgs e) //Событие нажатия клавиш
         {
             if (this.Visible)
             {
@@ -41,25 +42,20 @@ namespace Radio
                     vars.WhoIsPlaying = 1;
                 }
                 else
-                {
                     (Controls["button" + vars.WhoIsPlaying.ToString()] as Button).PerformClick();
-                }
             }
             else
             {
                 if (vars.WhoIsPlaying == 0) vars.WhoIsPlaying = 1;
-                vars.WhoIsPlaying_str = vars.WhoIsPlaying_str == "Play" ? "Stop" : "Play";
-                StartPlay(vars.WhoIsPlaying, vars.WhoIsPlaying_str);
+                StartPlay(vars.WhoIsPlaying);
             }
         }
 
-        WindowsMediaPlayer wmPlayer = new WindowsMediaPlayer();
-
-        private void StartPlay(int id, string pp)
+        private void StartPlay(int id)
         {
-            if (id != 2)
+            if (id != 25)
             {
-                if (pp == "Stop")
+                if (vars.WhoIsPlaying != id)
                 {
                     int bitrate = 128;
                     for (int i = 1; i <= 3; i++)
@@ -69,61 +65,48 @@ namespace Radio
 
                         (Controls["radioButton" + i.ToString()] as RadioButton).Enabled = false;
                     }
-
                     wmPlayer.controls.stop();
-                    wmPlayer.URL = @vars.radio_url_bitrate(bitrate, id);
+                    wmPlayer.URL = vars.radio_url_bitrate(bitrate, id);
                     wmPlayer.controls.play();
-                    ChangeButtonText(id);
                     vars.WhoIsPlaying = id;
+                    this.Text = string.Format("{0} - {1} now playing", vars.aName, vars._names[id]);
                 }
                 else
-                {
-                    wmPlayer.controls.stop();
-                    for (int i = 1; i <= 3; i++)
-                    {
-                        (Controls["radioButton" + i.ToString()] as RadioButton).Enabled = true;
-                    }
-                }
+                    PausePlay(id);
             }
         }
         private void PausePlay(int id)
         {
-            wmPlayer.controls.pause();
-        }
-
-        private void ChangeButtonText(int id = 0)
-        {
-            if (id != 0)
+            if (wmPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
             {
-                for (int i = 1; i <= vars.radio_label.Length; i++)
+                wmPlayer.controls.pause();
+                this.Text = string.Format("{0} - {1} is paused", vars.aName, vars._names[id]);
+                for (int i = 1; i <= 3; i++)
                 {
-                    if (i != 2)
-                        (Controls["button" + i.ToString()] as Button).Text = i != id ? "Play" : "Stop";
+                    (Controls["radioButton" + i.ToString()] as RadioButton).Enabled = false;
                 }
             }
             else
             {
-                for (int i = 1; i <= vars.radio_label.Length; i++)
+                wmPlayer.controls.play();
+                this.Text = string.Format("{0} - {1} now playing", vars.aName, vars._names[id]);
+                for (int i = 1; i <= 3; i++)
                 {
-                    if (i != 2)
-                        (Controls["button" + i.ToString()] as Button).Text = "Play";
+                    (Controls["radioButton" + i.ToString()] as RadioButton).Enabled = false;
                 }
             }
-
         }
 
         private void StartPlayer(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            btn.Text = btn.Text == "Play" ? "Stop" : "Play";
-
-            StartPlay(Convert.ToInt32(btn.TabIndex), btn.Text);
+            StartPlay(Convert.ToInt32(btn.TabIndex));
         }
 
         private void StopPlayer(object sender, EventArgs e)
         {
             wmPlayer.controls.stop();
-            ChangeButtonText();
+            this.Text = string.Format("{0}", vars.aName);
             for (int i = 1; i <= 3; i++)
             {
                 (Controls["radioButton" + i.ToString()] as RadioButton).Enabled = true;
@@ -134,17 +117,7 @@ namespace Radio
         {
             Panel panel1 = new Panel() { Dock = DockStyle.Fill, Name = "panel1", BackColor = System.Drawing.Color.Transparent };
             this.Controls.Add(panel1);
-
-            Label[] labels = new Label[vars.radio_label.Length - 1];
-            for (int i = 0, j = 16; i < labels.Length; i++)
-            {
-                if (i == 0)
-                    labels[i] = new Label() { Text = vars.radio_label[i], Name = "label " + i.ToString(), Location = new Point(13, j), Size = new Size(200, 23), BackColor = System.Drawing.Color.Transparent, Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))), ForeColor = System.Drawing.SystemColors.HotTrack };
-                else
-                    labels[i] = new Label() { Text = vars.radio_label[i], Name = "label " + i.ToString(), Location = new Point(13, i * 28 + j), Size = new Size(200, 23), BackColor = System.Drawing.Color.Transparent, Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))), ForeColor = System.Drawing.SystemColors.HotTrack };
-            }
             this.Controls["panel1"].SuspendLayout();
-            this.Controls["panel1"].Controls.AddRange(labels);
             this.Controls["panel1"].ResumeLayout();
         }
 
@@ -154,7 +127,7 @@ namespace Radio
             {
                 this.Hide();
                 notifyIcon1.Visible = true;
-                new Radio.funks.AddNotifyUserDelegate(new Radio.funks().NotifyUser).BeginInvoke("Радио продолжит работать в трее.\n\rСтарт/Стоп проигрывания - Scroll Lock", new vars().tNotifInfo, null, null);
+                new Radio.funks.AddNotifyUserDelegate(new Radio.funks().NotifyUser).BeginInvoke("Радио продолжит работать в трее.\n\rСтарт/Стоп проигрывания - Scroll Lock", vars.tNotifInfo, null, null);
             }
         }
 

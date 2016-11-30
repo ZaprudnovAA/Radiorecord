@@ -29,7 +29,7 @@ namespace Radio
             }
             NotifyUserText.Append(string.Format("{0}\r\n", message));
             Program.F.notifyIcon1.Visible = true;
-            Program.F.notifyIcon1.ShowBalloonTip(new vars().notifyTimeout, new vars().aName, NotifyUserText.ToString(), notifyIconType);
+            Program.F.notifyIcon1.ShowBalloonTip(vars.notifyTimeout, vars.aName, NotifyUserText.ToString(), notifyIconType);
             NotifyUserText.Clear();
         }
     }

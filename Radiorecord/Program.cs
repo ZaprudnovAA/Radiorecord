@@ -15,17 +15,19 @@ namespace Radio
         static void Main()
         {
             bool tryCreateNewApp;
-            m_instance = new Mutex(true, new vars().aName, out tryCreateNewApp);
+            m_instance = new Mutex(true, vars.aName, out tryCreateNewApp);
             if (tryCreateNewApp)
             {
                 Thread t = new Thread(new ThreadStart(ThreadProc));
-                t.Name = new vars().aName;
+                t.Name = vars.aName;
                 t.Start();
                 return;
             }
             else
             {
-                MessageBox.Show(string.Format("Приложение {0} уже запущено", new vars().aName), new vars().aName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                F.Show();
+                F.WindowState = FormWindowState.Normal;
+                MessageBox.Show(string.Format("Приложение {0} уже запущено", vars.aName), vars.aName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 

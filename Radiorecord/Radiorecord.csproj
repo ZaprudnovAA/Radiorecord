@@ -137,6 +137,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="075bed9cb6844ed19249ea35a2542e17.ico" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-vip.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-yo.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-trap.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-trance.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-techno.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-slow.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-rus.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-rr.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-rock.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-rave.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-pump.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-pirate.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-minimal.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-megamix.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-hard.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-gop.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-futurehouse.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-edm.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-dub.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-deep.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-dance.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-chill.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-breaks.png" />
+    <None Include="Resources\screenshot-www.radiorecord.ru-90.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
