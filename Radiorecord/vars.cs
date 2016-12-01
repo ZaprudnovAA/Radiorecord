@@ -42,21 +42,7 @@ namespace Radio
 
         public static string radio_url_bitrate(int bitrate, int id)
         {
-            switch (bitrate)
-            {
-                case 64:
-                    bitrate = 64;
-                    break;
-                case 128:
-                    bitrate = 128;
-                    break;
-                case 320:
-                    bitrate = 320;
-                    break;
-                default:
-                    bitrate = 128;
-                    break;
-            }
+            bitrate = (bitrate == 64 || bitrate == 128 || bitrate == 320) ? bitrate : 128;
             return string.Format("{0}{1}_{2}.m3u", _url, _prefixes[id], bitrate);
         }
     }

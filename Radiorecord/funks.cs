@@ -6,7 +6,7 @@ namespace Radio
 {
     class funks
     {
-        System.Text.StringBuilder NotifyUserText = new System.Text.StringBuilder();
+        private static System.Text.StringBuilder NotifyUserText = new System.Text.StringBuilder();
 
         public delegate void AddNotifyUserDelegate(string message, string type);
         public void NotifyUser(string message, string type)

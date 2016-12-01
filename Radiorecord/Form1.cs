@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using WMPLib;
 
@@ -9,9 +8,6 @@ namespace Radio
     {
         private Hook _hook;
         private WindowsMediaPlayer wmPlayer = new WindowsMediaPlayer();
-
-        [DllImport("user32.dll")]
-        private static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
 
         public Form1()
         {
@@ -25,14 +21,12 @@ namespace Radio
 
             this.KeyPreview = true;
 
-            keybd_event(0x91, 0x45, 0x1, (UIntPtr)0); //Scroll Lock
-
             _hook = new Hook(0x91); //Scroll Lock
             _hook.KeyPressed += new KeyPressEventHandler(_hook_KeyPressed);
             _hook.SetHook();
         }
 
-        private void _hook_KeyPressed(object sender, KeyPressEventArgs e) //Событие нажатия клавиш
+        private void _hook_KeyPressed(object sender, KeyPressEventArgs e)
         {
             if (this.Visible)
             {
@@ -75,6 +69,7 @@ namespace Radio
                     PausePlay(id);
             }
         }
+
         private void PausePlay(int id)
         {
             if (wmPlayer.playState == WMPLib.WMPPlayState.wmppsPlaying)
@@ -149,7 +144,5 @@ namespace Radio
             label_volume.Text = "Volume " + (trackBar1.Value * 10).ToString();
             wmPlayer.settings.volume = (trackBar1.Value * 10);
         }
-
     }
-
 }
