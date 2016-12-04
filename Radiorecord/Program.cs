@@ -14,8 +14,7 @@ namespace Radio
         [STAThread]
         static void Main()
         {
-            bool tryCreateNewApp;
-            m_instance = new Mutex(true, vars.aName, out tryCreateNewApp);
+            m_instance = new Mutex(true, vars.aName, out bool tryCreateNewApp);
             if (tryCreateNewApp)
             {
                 Application.EnableVisualStyles();
@@ -25,7 +24,9 @@ namespace Radio
                 return;
             }
             else
+            {
                 MessageBox.Show(string.Format("Приложение {0} уже запущено", vars.aName), vars.aName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
         }
     }
 }

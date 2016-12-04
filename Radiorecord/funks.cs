@@ -86,12 +86,8 @@ namespace Radio
         {
             if ((code >= 0 && wParam == (IntPtr)WH_KEYDOWN) && Marshal.ReadInt32(lParam) == _key)
             {
-
                 // бросаем событие
-                if (KeyPressed != null)
-                {
-                    KeyPressed(this, new KeyPressEventArgs(Convert.ToChar(code)));
-                }
+                KeyPressed?.Invoke(this, new KeyPressEventArgs(Convert.ToChar(code)));
             }
 
             // пробрасываем хук дальше
