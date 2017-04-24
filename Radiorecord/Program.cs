@@ -6,16 +6,16 @@ namespace Radio
 {
     static class Program
     {
-        private static Mutex m_instance;
         public static Form1 F;
+        private static bool mutexWasCreated;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            m_instance = new Mutex(true, vars.aName, out bool tryCreateNewApp);
-            if (tryCreateNewApp)
+            Mutex m_instance = new Mutex(true, vars.aName, out mutexWasCreated);
+            if (mutexWasCreated)
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

@@ -190,4 +190,22 @@
   <data name="vip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\screenshot-www.radiorecord.ru-vip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="goa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\screenshot-www.radiorecord.ru-goa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\screenshot-www.radiorecord.ru-gold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="naft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\screenshot-www.radiorecord.ru-naft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pump2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\screenshot-www.radiorecord.ru-pump2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="trop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\screenshot-www.radiorecord.ru-trop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\screenshot-www.radiorecord.ru-yo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

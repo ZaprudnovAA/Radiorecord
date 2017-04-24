@@ -133,6 +133,26 @@ namespace Radio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap goa {
+            get {
+                object obj = ResourceManager.GetObject("goa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gold {
+            get {
+                object obj = ResourceManager.GetObject("gold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gop {
             get {
                 object obj = ResourceManager.GetObject("gop", resourceCulture);
@@ -173,6 +193,16 @@ namespace Radio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap naft {
+            get {
+                object obj = ResourceManager.GetObject("naft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ps {
             get {
                 object obj = ResourceManager.GetObject("ps", resourceCulture);
@@ -186,6 +216,16 @@ namespace Radio.Properties {
         internal static System.Drawing.Bitmap pump {
             get {
                 object obj = ResourceManager.GetObject("pump", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pump2 {
+            get {
+                object obj = ResourceManager.GetObject("pump2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,6 +323,16 @@ namespace Radio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap trop {
+            get {
+                object obj = ResourceManager.GetObject("trop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap vip {
             get {
                 object obj = ResourceManager.GetObject("vip", resourceCulture);
@@ -296,6 +346,16 @@ namespace Radio.Properties {
         internal static System.Drawing.Bitmap yo {
             get {
                 object obj = ResourceManager.GetObject("yo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yo2 {
+            get {
+                object obj = ResourceManager.GetObject("yo2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

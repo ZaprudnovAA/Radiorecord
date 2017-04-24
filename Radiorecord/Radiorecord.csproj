@@ -137,6 +137,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="075bed9cb6844ed19249ea35a2542e17.ico" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-goa.png" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-gold.png" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-naft.png" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-pump2.png" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-trop.png" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-yo2.png" />
     <None Include="Resources\screenshot-www.radiorecord.ru-vip.png" />
     <None Include="Resources\screenshot-www.radiorecord.ru-yo.png" />
     <None Include="Resources\screenshot-www.radiorecord.ru-trap.png" />

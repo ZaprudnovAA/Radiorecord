@@ -62,6 +62,10 @@
             this.button23 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
+            this.button26 = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
+            this.button28 = new System.Windows.Forms.Button();
+            this.button30 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -434,28 +438,81 @@
             // button25
             // 
             this.button25.BackColor = System.Drawing.Color.Transparent;
-            this.button25.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button25.Location = new System.Drawing.Point(838, 0);
+            this.button25.BackgroundImage = global::Radio.Properties.Resources.trop;
+            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button25.Location = new System.Drawing.Point(0, 375);
             this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(75, 24);
+            this.button25.Size = new System.Drawing.Size(104, 125);
             this.button25.TabIndex = 25;
-            this.button25.Text = "Stop all";
-            this.button25.UseVisualStyleBackColor = true;
-            this.button25.Click += new System.EventHandler(this.StopPlayer);
+            this.button25.UseVisualStyleBackColor = false;
+            this.button25.Click += new System.EventHandler(this.StartPlayer);
+            // 
+            // button26
+            // 
+            this.button26.BackColor = System.Drawing.Color.Transparent;
+            this.button26.BackgroundImage = global::Radio.Properties.Resources.naft;
+            this.button26.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button26.Location = new System.Drawing.Point(104, 375);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(104, 125);
+            this.button26.TabIndex = 26;
+            this.button26.UseVisualStyleBackColor = false;
+            this.button26.Click += new System.EventHandler(this.StartPlayer);
+            // 
+            // button27
+            // 
+            this.button27.BackColor = System.Drawing.Color.Transparent;
+            this.button27.BackgroundImage = global::Radio.Properties.Resources.goa;
+            this.button27.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button27.Location = new System.Drawing.Point(208, 375);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(104, 125);
+            this.button27.TabIndex = 27;
+            this.button27.UseVisualStyleBackColor = false;
+            this.button27.Click += new System.EventHandler(this.StartPlayer);
+            // 
+            // button28
+            // 
+            this.button28.BackColor = System.Drawing.Color.Transparent;
+            this.button28.BackgroundImage = global::Radio.Properties.Resources.gold;
+            this.button28.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button28.Location = new System.Drawing.Point(312, 375);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(104, 125);
+            this.button28.TabIndex = 28;
+            this.button28.UseVisualStyleBackColor = false;
+            this.button28.Click += new System.EventHandler(this.StartPlayer);
+            // 
+            // button30
+            // 
+            this.button30.BackColor = System.Drawing.Color.Transparent;
+            this.button30.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button30.Location = new System.Drawing.Point(838, 0);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(75, 24);
+            this.button30.TabIndex = 30;
+            this.button30.Text = "Stop all";
+            this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.StopPlayer);
             // 
             // Form1
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.button25;
-            this.ClientSize = new System.Drawing.Size(921, 375);
+            this.CancelButton = this.button30;
+            this.ClientSize = new System.Drawing.Size(921, 501);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label_volume);
             this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.button30);
+            this.Controls.Add(this.button28);
+            this.Controls.Add(this.button27);
+            this.Controls.Add(this.button26);
+            this.Controls.Add(this.button25);
             this.Controls.Add(this.button24);
             this.Controls.Add(this.button23);
             this.Controls.Add(this.button22);
@@ -478,7 +535,6 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button25);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -525,6 +581,10 @@
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Button button30;
         public System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label_volume;

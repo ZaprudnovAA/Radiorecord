@@ -8,28 +8,11 @@ namespace Radio
     {
         private static System.Text.StringBuilder NotifyUserText = new System.Text.StringBuilder();
 
-        public delegate void AddNotifyUserDelegate(string message, string type);
-        public void NotifyUser(string message, string type)
+        public delegate void AddNotifyUserDelegate(string message);
+        public void NotifyUser(string message)
         {
-            ToolTipIcon notifyIconType = new ToolTipIcon();
-            switch (type)
-            {
-                case "info":
-                    notifyIconType = ToolTipIcon.Info;
-                    break;
-                case "warning":
-                    notifyIconType = ToolTipIcon.Warning;
-                    break;
-                case "error":
-                    notifyIconType = ToolTipIcon.Error;
-                    break;
-                default:
-                    notifyIconType = ToolTipIcon.Info;
-                    break;
-            }
-            NotifyUserText.Append(string.Format("{0}\r\n", message));
             Program.F.notifyIcon1.Visible = true;
-            Program.F.notifyIcon1.ShowBalloonTip(vars.notifyTimeout, vars.aName, NotifyUserText.ToString(), notifyIconType);
+            Program.F.notifyIcon1.ShowBalloonTip(vars.notifyTimeout, vars.aName, string.Format("{0}\r\n", message), ToolTipIcon.Info);
             NotifyUserText.Clear();
         }
     }
@@ -87,7 +70,7 @@ namespace Radio
             if ((code >= 0 && wParam == (IntPtr)WH_KEYDOWN) && Marshal.ReadInt32(lParam) == _key)
             {
                 // бросаем событие
-                KeyPressed?.Invoke(this, new KeyPressEventArgs(Convert.ToChar(code)));
+                KeyPressed.Invoke(this, new KeyPressEventArgs(Convert.ToChar(code)));
             }
 
             // пробрасываем хук дальше

@@ -12,8 +12,8 @@ namespace Radio
         public static string tNotifErro = "error";
 
         public static string _url = "http://air2.radiorecord.ru:805/";
-        public static string[] _prefixes = new String[25] { "", "rr", "mix", "deep", "club", "fut", "tm", "chil", "mini", "ps", "rus", "vip", "sd90", "brks", "dub", "dc", "techno", "teo", "trap", "pump", "rock", "mdl", "gop", "yo", "rave" };
-        public static string[] _names = new String[25] {
+        public static string[] _prefixes = new String[29] { "", "rr", "mix", "deep", "club", "fut", "tm", "chil", "mini", "ps", "rus", "vip", "sd90", "brks", "dub", "dc", "techno", "teo", "trap", "pump", "rock", "mdl", "gop", "yo", "rave", "trop", "naft", "goa", "gold" };
+        public static string[] _names = new String[29] {
             ""
             , "Radio Record"
             , "Megamix"
@@ -38,7 +38,11 @@ namespace Radio
             , "Медляк FM"
             , "Гоп FM"
             , "Yo!FM"
-            , "Rave FM" };
+            , "Rave FM"
+            , "Tropical"
+            , "Нафталин ФМ"
+            , "GOA/PSY"
+            , "Gold" };
 
         public static string radio_url_bitrate(int bitrate, int id)
         {

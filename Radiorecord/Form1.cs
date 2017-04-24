@@ -53,7 +53,7 @@ namespace Radio
 
         private void StartPlay(int id)
         {
-            if (id != 25)
+            if (id != 30)
             {
                 if (vars.WhoIsPlaying != id)
                 {
@@ -132,7 +132,7 @@ namespace Radio
             {
                 Hide();
                 notifyIcon1.Visible = true;
-                new funks.AddNotifyUserDelegate(new funks().NotifyUser).BeginInvoke("Радио продолжит работать в трее.\n\rСтарт/Стоп проигрывания - Scroll Lock", vars.tNotifInfo, null, null);
+                new funks.AddNotifyUserDelegate(new funks().NotifyUser).BeginInvoke("Радио продолжит работать в трее.\n\rСтарт/Стоп проигрывания - Scroll Lock", null, null);
             }
         }
 
@@ -147,7 +147,7 @@ namespace Radio
         {
             if (e.KeyCode == Keys.F1)
             {
-                MessageBox.Show("Пользоваться программой очень просто!\r\n- Выбрать понравившуюся станцию\r\n- Нажать кнопку проигрывания у выбранной станции\r\n- PROFIT\r\n\r\nГорячие клавиши:\r\nENTER\t- запуск первой станции\r\nESC\t- остановить проигрывание\r\nScrollLock\t- остановить/воспроизвести выбранную станцию", "микроHelp", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Пользоваться программой очень просто!\r\n- Выбрать понравившуюся станцию\r\n- Нажать кнопку проигрывания у выбранной станции\r\n- PROFIT\r\n\r\nГорячие клавиши:\r\nENTER\t- запуск первой станции\r\nESC\t- остановить проигрывание\r\nScrollLock\t- остановить/воспроизвести выбранную станцию\r\n\r\nAutor: ZaprudnovAA", "микроHelp", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
