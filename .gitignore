@@ -1,0 +1,31 @@
+# Visual Studio
+*.suo
+*.user
+*.sln.docstates
+*.obj
+*.pch
+*.tlog
+*.log
+*.scc
+*.exp
+*.ilk
+*.lastbuildstate
+vc100.pdb
+ipch
+*.sdf
+*.opensdf
+*.idb
+*.vcxproj
+*.vcxproj.filters
+*.sln
+[Dd]ebug*/
+[Rr]elease*/
+
+# OSX/Linux build products
+*.DS_Store
+*.mak*
+*.mak.vpc_crc
+*.project
+*.xcodeproj/
+
+# Specific Source build products
