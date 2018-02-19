@@ -25,7 +25,7 @@ namespace Radio
             }
             else
             {
-                MessageBox.Show(string.Format("Приложение {0} уже запущено", vars.aName), vars.aName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(string.Format("{0} is already running", vars.aName), vars.aName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
     }

@@ -137,10 +137,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="075bed9cb6844ed19249ea35a2542e17.ico" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-ahsh.png" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-fbass.png" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-gast.png" />
     <Content Include="Resources\screenshot-www.radiorecord.ru-goa.png" />
     <Content Include="Resources\screenshot-www.radiorecord.ru-gold.png" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-hbass.png" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-ibiza.png" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-mf.png" />
     <Content Include="Resources\screenshot-www.radiorecord.ru-naft.png" />
     <Content Include="Resources\screenshot-www.radiorecord.ru-pump2.png" />
+    <Content Include="Resources\screenshot-www.radiorecord.ru-rmx.png" />
     <Content Include="Resources\screenshot-www.radiorecord.ru-trop.png" />
     <Content Include="Resources\screenshot-www.radiorecord.ru-yo2.png" />
     <None Include="Resources\screenshot-www.radiorecord.ru-vip.png" />

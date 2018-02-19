@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Resources;
 using System.Windows.Forms;
 using WMPLib;
 
@@ -11,6 +12,9 @@ namespace Radio
 
         public Form1()
         {
+            vars.ListOfStations();
+            CreateButtons();
+
             InitializeComponent();
             Show();
             WindowState = FormWindowState.Normal;
@@ -26,13 +30,65 @@ namespace Radio
             _hook.SetHook();
         }
 
+        private void CreateButtons()
+        {
+            int buttonsInLine = 8;
+            int buttonWidth = 104;
+            int buttonHeight = 125;
+            int lineBufer = 0;
+            int rowPoint = 0;
+            int elementNumber = 0;
+            int lineNumber = 0;
+            ResourceManager rm = new ResourceManager("Radio.Properties.Resources", typeof(Radio.Properties.Resources).Assembly);
+
+            for (int id = 1; id < (vars.StationList.Count + 1); id++)
+            {
+
+                lineNumber = (id-1) / buttonsInLine;
+
+                if (lineNumber == lineBufer)
+                {
+                    rowPoint = elementNumber * buttonWidth;
+                    elementNumber++;
+                }
+                else
+                {
+                    lineBufer = lineNumber;
+                    rowPoint = 0;
+                    elementNumber = 0;
+                    rowPoint = elementNumber * buttonWidth;
+                    elementNumber++;
+                }
+
+                Button button = new Button();
+                button.BackColor = System.Drawing.Color.Transparent;
+                button.BackgroundImage = vars.StationList.Find(x => x._id == id)._image;
+                button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+                button.Location = new System.Drawing.Point(rowPoint, lineNumber * buttonHeight);
+                button.Name = "button" + id;
+                button.Size = new System.Drawing.Size(buttonWidth, buttonHeight);
+                button.TabIndex = id;
+                button.UseVisualStyleBackColor = false;
+                button.Visible = true;
+                button.Click += new System.EventHandler(this.StartPlayer);
+
+                if (button != null)
+                {
+                    this.Controls.Add(button);
+                }
+
+                this.ClientSize = new System.Drawing.Size(921, ((lineNumber + 1) * buttonHeight));
+                this.Refresh();
+            }
+        }
+
         private void _hook_KeyPressed(object sender, KeyPressEventArgs e)
         {
             if (Visible)
             {
                 if (vars.WhoIsPlaying == 0)
                 {
-                    button1.PerformClick();
+                    (Controls["button1"] as Button).PerformClick();
                     vars.WhoIsPlaying = 1;
                 }
                 else
@@ -51,9 +107,9 @@ namespace Radio
             }
         }
 
-        private void StartPlay(int id)
+        public void StartPlay(int id)
         {
-            if (id != 30)
+            if (id != 50)
             {
                 if (vars.WhoIsPlaying != id)
                 {
@@ -71,7 +127,7 @@ namespace Radio
                     wmPlayer.URL = vars.radio_url_bitrate(bitrate, id);
                     wmPlayer.controls.play();
                     vars.WhoIsPlaying = id;
-                    Text = string.Format("{0} - {1} now playing", vars.aName, vars._names[id]);
+                    Text = string.Format("{0} - {1} now playing", vars.aName, vars.StationList.Find((x) => x._id == id)._name);
                 }
                 else
                 {
@@ -85,7 +141,7 @@ namespace Radio
             if (wmPlayer.playState == WMPPlayState.wmppsPlaying)
             {
                 wmPlayer.controls.pause();
-                Text = string.Format("{0} - {1} is paused", vars.aName, vars._names[id]);
+                Text = string.Format("{0} - {1} is paused", vars.aName, vars.StationList.Find((x) => x._id == id)._name);
                 for (int i = 1; i <= 3; i++)
                 {
                     (Controls["radioButton" + i.ToString()] as RadioButton).Enabled = false;
@@ -94,7 +150,7 @@ namespace Radio
             else
             {
                 wmPlayer.controls.play();
-                Text = string.Format("{0} - {1} now playing", vars.aName, vars._names[id]);
+                Text = string.Format("{0} - {1} now playing", vars.aName, vars.StationList.Find((x) => x._id == id)._name);
                 for (int i = 1; i <= 3; i++)
                 {
                     (Controls["radioButton" + i.ToString()] as RadioButton).Enabled = false;
