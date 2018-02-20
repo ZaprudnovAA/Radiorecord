@@ -55,8 +55,8 @@
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar1.Size = new System.Drawing.Size(45, 242);
-            this.trackBar1.TabIndex = 28;
-            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBar1.TabIndex = 45;
+            this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // label_volume
@@ -68,7 +68,7 @@
             this.label_volume.Location = new System.Drawing.Point(839, 111);
             this.label_volume.Name = "label_volume";
             this.label_volume.Size = new System.Drawing.Size(73, 13);
-            this.label_volume.TabIndex = 29;
+            this.label_volume.TabIndex = 46;
             this.label_volume.Text = "Volume 100";
             this.label_volume.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -79,7 +79,7 @@
             this.radioButton1.Location = new System.Drawing.Point(856, 43);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(37, 17);
-            this.radioButton1.TabIndex = 26;
+            this.radioButton1.TabIndex = 47;
             this.radioButton1.Text = "64";
             this.radioButton1.UseVisualStyleBackColor = false;
             // 
@@ -91,7 +91,7 @@
             this.radioButton2.Location = new System.Drawing.Point(856, 61);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(43, 17);
-            this.radioButton2.TabIndex = 27;
+            this.radioButton2.TabIndex = 48;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "128";
             this.radioButton2.UseVisualStyleBackColor = false;
@@ -103,7 +103,7 @@
             this.radioButton3.Location = new System.Drawing.Point(856, 79);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(43, 17);
-            this.radioButton3.TabIndex = 28;
+            this.radioButton3.TabIndex = 49;
             this.radioButton3.Text = "320";
             this.radioButton3.UseVisualStyleBackColor = false;
             // 
