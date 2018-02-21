@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="075bed9cb6844ed19249ea35a2542e17.ico" />
+    <None Include="Resources\Record_Jingle.wav" />
     <Content Include="Resources\screenshot-www.radiorecord.ru-ahsh.png" />
     <Content Include="Resources\screenshot-www.radiorecord.ru-fbass.png" />
     <Content Include="Resources\screenshot-www.radiorecord.ru-gast.png" />

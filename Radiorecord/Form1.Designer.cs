@@ -1,11 +1,14 @@
-﻿namespace Radio
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace Radio
 {
     partial class Form1
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -190,14 +193,14 @@
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button28;
         */
-        private System.Windows.Forms.Button button50;
-        public System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Label label_volume;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.Label label1;
+        private Button button50;
+        public NotifyIcon notifyIcon1;
+        private TrackBar trackBar1;
+        private Label label_volume;
+        private RadioButton radioButton1;
+        private RadioButton radioButton2;
+        private RadioButton radioButton3;
+        private Label label1;
     }
 }
 

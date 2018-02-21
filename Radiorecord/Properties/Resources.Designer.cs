@@ -141,6 +141,43 @@ namespace Radio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Пользоваться программой очень просто!
+        ///- Выбрать понравившуюся станцию
+        ///- Нажать кнопку проигрывания у выбранной станции
+        ///- PROFIT
+        ///
+        ///Горячие клавиши:
+        ///ENTER	- запуск первой станции
+        ///ESC	- остановить проигрывание
+        ///ScrollLock	- остановить/воспроизвести выбранную станцию
+        ///
+        ///Autor: ZaprudnovAA.
+        /// </summary>
+        internal static string Form1_Form1_KeyDown_ {
+            get {
+                return ResourceManager.GetString("Form1_Form1_KeyDown_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to микроHelp.
+        /// </summary>
+        internal static string Form1_Form1_KeyDown_микроHelp {
+            get {
+                return ResourceManager.GetString("Form1_Form1_KeyDown_микроHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volume .
+        /// </summary>
+        internal static string Form1_trackBar1_Scroll_Volume_ {
+            get {
+                return ResourceManager.GetString("Form1_trackBar1_Scroll_Volume_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap fut {
@@ -297,6 +334,15 @@ namespace Radio.Properties {
             get {
                 object obj = ResourceManager.GetObject("rave", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Record_Jingle {
+            get {
+                return ResourceManager.GetStream("Record_Jingle", resourceCulture);
             }
         }
         

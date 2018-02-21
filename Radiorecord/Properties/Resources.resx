@@ -229,4 +229,26 @@
   <data name="rmx" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\screenshot-www.radiorecord.ru-rmx.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Record_Jingle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Record_Jingle.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Form1_Form1_KeyDown_" xml:space="preserve">
+    <value>Пользоваться программой очень просто!
+- Выбрать понравившуюся станцию
+- Нажать кнопку проигрывания у выбранной станции
+- PROFIT
+
+Горячие клавиши:
+ENTER	- запуск первой станции
+ESC	- остановить проигрывание
+ScrollLock	- остановить/воспроизвести выбранную станцию
+
+Autor: ZaprudnovAA</value>
+  </data>
+  <data name="Form1_Form1_KeyDown_микроHelp" xml:space="preserve">
+    <value>микроHelp</value>
+  </data>
+  <data name="Form1_trackBar1_Scroll_Volume_" xml:space="preserve">
+    <value>Volume </value>
+  </data>
 </root>

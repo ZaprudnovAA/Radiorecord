@@ -4,18 +4,18 @@ using System.Windows.Forms;
 
 namespace Radio
 {
-    static class Program
+    internal static class Program
     {
         public static Form1 F;
-        private static bool mutexWasCreated;
+        private static bool _mutexWasCreated;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-            Mutex m_instance = new Mutex(true, vars.aName, out mutexWasCreated);
-            if (mutexWasCreated)
+            new Mutex(true, Vars.AName, out _mutexWasCreated);
+            if (_mutexWasCreated)
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -25,7 +25,7 @@ namespace Radio
             }
             else
             {
-                MessageBox.Show(string.Format("{0} is already running", vars.aName), vars.aName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(string.Format("{0} is already running", Vars.AName), Vars.AName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
     }
