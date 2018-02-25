@@ -29,6 +29,7 @@ namespace Radio
             trackBar1.Value = _wmPlayer.settings.volume / 10;
 
             Funks.PlayJingle();
+            new Update().Check();
         }
 
         private void CreateButtons()
@@ -72,10 +73,7 @@ namespace Radio
                 };
                 button.Click += StartPlayer;
 
-                if (button != null)
-                {
-                    Controls.Add(button);
-                }
+                Controls.Add(button);
 
                 ClientSize = new Size(921, (lineNumber + 1) * buttonHeight);
             }
@@ -106,7 +104,7 @@ namespace Radio
             }
         }
 
-        public void StartPlay(int id)
+        private void StartPlay(int id)
         {
             if (id == Vars.PlayPauseButtonId) return;
             if (Vars.WhoIsPlaying != id)

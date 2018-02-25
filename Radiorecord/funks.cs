@@ -42,7 +42,6 @@ namespace Radio
         private const int WH_KEYDOWN = 0x0100;
         #endregion
 
-        // код клавиши на которую ставим хук
         private readonly int _key;
         public event KeyPressEventHandler KeyPressed;
 
@@ -67,7 +66,7 @@ namespace Radio
             UnHook();
         }
 
-        public void UnHook()
+        private void UnHook()
         {
             UnhookWindowsHookEx(_hHook);
         }
@@ -76,10 +75,9 @@ namespace Radio
         {
             if (code < 0 || wParam != (IntPtr) WH_KEYDOWN || Marshal.ReadInt32(lParam) != _key)
                 return CallNextHookEx(_hHook, code, (int) wParam, lParam);
-            // бросаем событие
+
             if (KeyPressed != null) KeyPressed.Invoke(this, new KeyPressEventArgs(Convert.ToChar(code)));
 
-            // пробрасываем хук дальше
             return CallNextHookEx(_hHook, code, (int)wParam, lParam);
         }
     }

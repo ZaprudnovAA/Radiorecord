@@ -14,7 +14,7 @@ namespace Radio
         [STAThread]
         private static void Main()
         {
-            new Mutex(true, Vars.AName, out _mutexWasCreated);
+            var mutex = new Mutex(true, Vars.AName, out _mutexWasCreated);
             if (_mutexWasCreated)
             {
                 Application.EnableVisualStyles();

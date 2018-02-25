@@ -4,19 +4,16 @@ using Radio.Properties;
 
 namespace Radio
 {
-    internal class Vars
+    internal static class Vars
     {
         public static int WhoIsPlaying = 0;
         public const string AName = "Radiorecord";
         public const int NotifyTimeout = 30000;
-        public const string NotifInfo = "info";
-        public const string NotifWarn = "warning";
-        public const string NotifErro = "error";
         public const int PlayPauseButtonId = 50;
         public const int DefaultBitrate = 128;
 
-        public const string Url = "http://air.radiorecord.ru:805/";
-        public static List<Stations> StationList = new List<Stations>();
+        private const string Url = "http://air.radiorecord.ru:805/";
+        public static readonly List<Stations> StationList = new List<Stations>();
 
         public static string radio_url_bitrate(int bitrate, int id)
         {
