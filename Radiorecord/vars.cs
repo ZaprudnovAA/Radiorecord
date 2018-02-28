@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using Radio.Properties;
 
@@ -6,7 +7,10 @@ namespace Radio
 {
     internal static class Vars
     {
-        public static int WhoIsPlaying = 0;
+        public static int WhoIsPlaying = 
+            Convert.ToInt32(RegistryWorker.GetValue(RegistryWorker.FavoriteStationName)) == 0 
+                ? 1 
+                : Convert.ToInt32(RegistryWorker.GetValue(RegistryWorker.FavoriteStationName));
         public const string AName = "Radiorecord";
         public const int NotifyTimeout = 30000;
         public const int PlayPauseButtonId = 50;

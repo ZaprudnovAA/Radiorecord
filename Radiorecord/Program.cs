@@ -14,6 +14,11 @@ namespace Radio
         [STAThread]
         private static void Main()
         {
+            RegistryWorker.CreateSubKey();
+            new Update().Check();
+            Vars.ListOfStations();
+            Funks.PlayJingle();
+
             var mutex = new Mutex(true, Vars.AName, out _mutexWasCreated);
             if (_mutexWasCreated)
             {

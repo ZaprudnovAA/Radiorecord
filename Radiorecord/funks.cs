@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Media;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -6,6 +7,82 @@ using System.Windows.Forms;
 
 namespace Radio
 {
+    internal static class RegistryWorker
+    {
+        private static readonly RegistryKey CurrentUserKey = Registry.CurrentUser;
+        private const string SoftwareKey = "Software";
+        private const string ProgramDeveloperKey = "ZaprudnovAA";
+        internal const string FavoriteStationName = "FavoriteStation";
+
+        public static void CreateSubKey()
+        {
+            try
+            {
+                using (RegistryKey softwareKeyOpened = CurrentUserKey.OpenSubKey(SoftwareKey, true))
+                {
+                    if (softwareKeyOpened != null)
+                    {
+                        softwareKeyOpened.CreateSubKey(ProgramDeveloperKey);
+                        softwareKeyOpened.Close();
+                    }
+
+                    using (RegistryKey programDeveloperKeyOpened = CurrentUserKey.OpenSubKey(SoftwareKey + @"\" + ProgramDeveloperKey, true))
+                    {
+                        if (programDeveloperKeyOpened != null)
+                        {
+                            programDeveloperKeyOpened.CreateSubKey(Vars.AName);
+                            programDeveloperKeyOpened.Close();
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                // ignored
+            }
+        }
+
+        public static void SetValue(string name, string value)
+        {
+            try
+            {
+                using (RegistryKey programKeyOpened = CurrentUserKey.OpenSubKey(SoftwareKey + @"\" + ProgramDeveloperKey + @"\" + Vars.AName, true))
+                {
+                    if (programKeyOpened == null) return;
+                    programKeyOpened.SetValue(name, value);
+                    programKeyOpened.Close();
+                }
+            }
+            catch
+            {
+                // ignored
+            }
+        }
+
+        public static string GetValue(string name)
+        {
+            string value = null;
+
+            try
+            {
+                using (RegistryKey programKeyOpened = CurrentUserKey.OpenSubKey(SoftwareKey + @"\" + ProgramDeveloperKey + @"\" + Vars.AName, true))
+                {
+                    if (programKeyOpened != null)
+                    {
+                        value = programKeyOpened.GetValue(name).ToString();
+                        programKeyOpened.Close();
+                    }
+                }
+            }
+            catch
+            {
+                // ignored
+            }
+
+            return value;
+        }
+    }
+
     internal static class Funks
     {
         private static readonly StringBuilder NotifyUserText = new StringBuilder();
@@ -20,8 +97,22 @@ namespace Radio
 
         public static void PlayJingle()
         {
-            new SoundPlayer(Properties.Resources.Record_Jingle).Play();
+            try
+            {
+                new SoundPlayer(Properties.Resources.Record_Jingle).Play();
+            }
+            catch
+            {
+                // ignored
+            }
         }
+
+        public static void SetFavoriteStation(int id)
+        {
+            Vars.WhoIsPlaying = id;
+            RegistryWorker.SetValue(RegistryWorker.FavoriteStationName, id.ToString());
+        }
+
     }
 
     public class Hook : IDisposable
@@ -38,8 +129,8 @@ namespace Radio
         private static extern bool UnhookWindowsHookEx(IntPtr hInstance);
         #endregion
         #region Constants
-        private const int WH_KEYBOARD_LL = 13;
-        private const int WH_KEYDOWN = 0x0100;
+        private const int WhKeyboardLl = 13;
+        private const int WhKeydown = 0x0100;
         #endregion
 
         private readonly int _key;
@@ -58,7 +149,7 @@ namespace Radio
         public void SetHook()
         {
             var hInstance = LoadLibrary("User32");
-            _hHook = SetWindowsHookEx(WH_KEYBOARD_LL, _proc, hInstance, 0);
+            _hHook = SetWindowsHookEx(WhKeyboardLl, _proc, hInstance, 0);
         }
 
         public void Dispose()
@@ -73,12 +164,13 @@ namespace Radio
 
         private IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam)
         {
-            if (code < 0 || wParam != (IntPtr) WH_KEYDOWN || Marshal.ReadInt32(lParam) != _key)
-                return CallNextHookEx(_hHook, code, (int) wParam, lParam);
+            if (code < 0 || wParam != (IntPtr)WhKeydown || Marshal.ReadInt32(lParam) != _key)
+                return CallNextHookEx(_hHook, code, (int)wParam, lParam);
 
             if (KeyPressed != null) KeyPressed.Invoke(this, new KeyPressEventArgs(Convert.ToChar(code)));
 
             return CallNextHookEx(_hHook, code, (int)wParam, lParam);
         }
+
     }
 }

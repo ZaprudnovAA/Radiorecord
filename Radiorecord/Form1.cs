@@ -13,23 +13,21 @@ namespace Radio
 
         public Form1()
         {
-            Vars.ListOfStations();
             CreateButtons();
-
-            Hook.KeyPressed += _hook_KeyPressed;
-            Hook.SetHook();
 
             InitializeComponent();
             Show();
             WindowState = FormWindowState.Normal;
+
+            Hook.KeyPressed += _hook_KeyPressed;
+            Hook.SetHook();
 
             _wmPlayer.settings.volume = 80;
             KeyPreview = true;
             label_volume.Text = Resources.Form1_trackBar1_Scroll_Volume_ + _wmPlayer.settings.volume;
             trackBar1.Value = _wmPlayer.settings.volume / 10;
 
-            Funks.PlayJingle();
-            new Update().Check();
+            StartPlay(Vars.WhoIsPlaying);
         }
 
         private void CreateButtons()
@@ -43,7 +41,7 @@ namespace Radio
             for (var id = 1; id < Vars.StationList.Count + 1; id++)
             {
 
-                var lineNumber = (id-1) / buttonsInLine;
+                var lineNumber = (id - 1) / buttonsInLine;
 
                 int rowPoint;
                 if (lineNumber == lineBufer)
@@ -69,7 +67,8 @@ namespace Radio
                     Size = new Size(buttonWidth, buttonHeight),
                     TabIndex = id,
                     UseVisualStyleBackColor = false,
-                    Visible = true
+                    Visible = true,
+                    TabStop = false
                 };
                 button.Click += StartPlayer;
 
@@ -85,19 +84,19 @@ namespace Radio
             {
                 if (Vars.WhoIsPlaying == 0)
                 {
-                    ((Button) Controls["button1"]).PerformClick();
-                    Vars.WhoIsPlaying = 1;
+                    ((Button)Controls["button1"]).PerformClick();
+                    Funks.SetFavoriteStation(1);
                 }
                 else
                 {
-                    ((Button) Controls["button" + Vars.WhoIsPlaying]).PerformClick();
+                    ((Button)Controls["button" + Vars.WhoIsPlaying]).PerformClick();
                 }
             }
             else
             {
                 if (Vars.WhoIsPlaying == 0)
                 {
-                    Vars.WhoIsPlaying = 1;
+                    Funks.SetFavoriteStation(1);
                 }
 
                 StartPlay(Vars.WhoIsPlaying);
@@ -107,28 +106,31 @@ namespace Radio
         private void StartPlay(int id)
         {
             if (id == Vars.PlayPauseButtonId) return;
-            if (Vars.WhoIsPlaying != id)
+
+            if (Vars.WhoIsPlaying != id || (_wmPlayer.playState != WMPPlayState.wmppsPlaying && _wmPlayer.playState != WMPPlayState.wmppsPaused))
             {
                 var bitrate = Vars.DefaultBitrate;
                 for (var i = 1; i <= 3; i++)
                 {
-                    if (((RadioButton) Controls["radioButton" + i]).Checked)
+                    if (((RadioButton)Controls["radioButton" + i]).Checked)
                     {
-                        bitrate = Convert.ToInt32(((RadioButton) Controls["radioButton" + i]).Text);
+                        bitrate = Convert.ToInt32(((RadioButton)Controls["radioButton" + i]).Text);
                     }
 
-                    ((RadioButton) Controls["radioButton" + i]).Enabled = false;
+                    ((RadioButton)Controls["radioButton" + i]).Enabled = false;
                 }
                 _wmPlayer.controls.stop();
                 _wmPlayer.URL = Vars.radio_url_bitrate(bitrate, id);
                 _wmPlayer.controls.play();
-                Vars.WhoIsPlaying = id;
+                Funks.SetFavoriteStation(id);
                 Text = string.Format("{0} - {1} now playing", Vars.AName, Vars.StationList.Find(x => x.Id == id).Name);
             }
             else
             {
                 PausePlay(id);
             }
+
+            ActivateDeactivateButtons(id);
         }
 
         private void PausePlay(int id)
@@ -137,20 +139,19 @@ namespace Radio
             {
                 _wmPlayer.controls.pause();
                 Text = string.Format("{0} - {1} is paused", Vars.AName, Vars.StationList.Find(x => x.Id == id).Name);
-                for (var i = 1; i <= 3; i++)
-                {
-                    ((RadioButton) Controls["radioButton" + i]).Enabled = false;
-                }
             }
             else
             {
                 _wmPlayer.controls.play();
                 Text = string.Format("{0} - {1} now playing", Vars.AName, Vars.StationList.Find(x => x.Id == id).Name);
-                for (var i = 1; i <= 3; i++)
-                {
-                    ((RadioButton) Controls["radioButton" + i]).Enabled = false;
-                }
             }
+
+            for (var i = 1; i <= 3; i++)
+            {
+                ((RadioButton)Controls["radioButton" + i]).Enabled = false;
+            }
+
+            ActivateDeactivateButtons(id);
         }
 
         private void StartPlayer(object sender, EventArgs e)
@@ -163,9 +164,34 @@ namespace Radio
         {
             _wmPlayer.controls.stop();
             Text = string.Format("{0}", Vars.AName);
+
             for (var i = 1; i <= 3; i++)
             {
-                ((RadioButton) Controls["radioButton" + i]).Enabled = true;
+                ((RadioButton)Controls["radioButton" + i]).Enabled = true;
+            }
+
+            ActivateDeactivateButtons();
+        }
+
+        private void ActivateDeactivateButtons(int? id = null)
+        {
+            try
+            {
+                for (var i = 1; i <= Vars.StationList.Count; i++)
+                {
+                    ((Button)Controls["button" + i]).FlatAppearance.BorderSize = 0;
+                    ((Button)Controls["button" + i]).FlatAppearance.BorderColor = Color.White;
+                    ((Button)Controls["button" + i]).FlatStyle = FlatStyle.Standard;
+                }
+
+                if (id == null) return;
+                ((Button)Controls["button" + id]).FlatAppearance.BorderSize = 4;
+                ((Button)Controls["button" + id]).FlatAppearance.BorderColor = Color.CadetBlue;
+                ((Button)Controls["button" + id]).FlatStyle = FlatStyle.Flat;
+            }
+            catch
+            {
+                // ignored
             }
         }
 

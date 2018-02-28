@@ -52,15 +52,14 @@ namespace Radio
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                //debug.Save("public void Check(bool launcher = false)", "", ex.Message);
+                // ignored
             }
         }
 
-        private void DownloadFile(string filename)
+        private static void DownloadFile(string filename)
         {
-            //string filenamePath = Path.Combine(_tempPath, filename);
             string filenamePath = filename;
             if (File.Exists(filenamePath) && new FileInfo(filenamePath).Length == 0) { File.Delete(filenamePath); }
 
@@ -74,16 +73,16 @@ namespace Radio
                         {
                             client.DownloadFileAsync(new Uri(Url + filename), filenamePath);
                         }
-                        catch (Exception ex)
+                        catch
                         {
-                            //debug.Save("private void DownloadFile(string filename, string xmlVersion, string xmlChecksumm)", "Filename: " + filename + Environment.NewLine + "Localname: " + (localFile != null ? localFile : "null") + Environment.NewLine + "URL: " + url, ex.Message);
+                            // ignored
                         }
                     }
                 }
             }
-            catch (Exception ex1)
+            catch
             {
-                //debug.Save("private void DownloadFile(string filename, string xmlVersion, string xmlChecksumm)", "Filename: " + filename + Environment.NewLine + "Localname: " + (localFile != null ? localFile : "null") + Environment.NewLine + "URL: " + url, ex1.Message);
+                // ignored
             }
         }
     }
