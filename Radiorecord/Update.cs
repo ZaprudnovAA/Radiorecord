@@ -10,7 +10,8 @@ namespace Radio
 {
     internal class Update
     {
-        private const string Url = @"https://github.com/ZaprudnovAA/Radiorecord/tree/master/Release/";
+        //private const string Url = @"https://github.com/ZaprudnovAA/Radiorecord/tree/master/Release/";
+        private const string Url = @"http://rosvel.ru/Radiorecord/";
         private static readonly string ProgramName = Application.ProductName + ".exe";
         private readonly string _programNameNew = ProgramName + ".update";
         private const string UpdaterName = @"ZAAUniversalUpdaterConsole.exe";
