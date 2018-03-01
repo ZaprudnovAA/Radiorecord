@@ -90,7 +90,6 @@ namespace Radio
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton2.Checked = true;
             this.radioButton2.Location = new System.Drawing.Point(856, 61);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(43, 17);

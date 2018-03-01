@@ -15,6 +15,15 @@ namespace Radio
         public const int NotifyTimeout = 30000;
         public const int PlayPauseButtonId = 50;
         public const int DefaultBitrate = 128;
+        public const int DefaultVolume = 80;
+        public static int UsersBitrate =
+            Convert.ToInt32(RegistryWorker.GetValue(RegistryWorker.FavoriteBitrateName)) == 0
+                ? DefaultBitrate
+                : Convert.ToInt32(RegistryWorker.GetValue(RegistryWorker.FavoriteBitrateName));
+        public static int UsersVolume =
+            Convert.ToInt32(RegistryWorker.GetValue(RegistryWorker.FavoriteVolumeName)) == 0
+                ? DefaultVolume
+                : Convert.ToInt32(RegistryWorker.GetValue(RegistryWorker.FavoriteVolumeName));
 
         private const string Url = "http://air.radiorecord.ru:805/";
         public static readonly List<Stations> StationList = new List<Stations>();
@@ -22,6 +31,7 @@ namespace Radio
         public static string radio_url_bitrate(int bitrate, int id)
         {
             bitrate = bitrate == 64 || bitrate == 128 || bitrate == 320 ? bitrate : 128;
+            UsersBitrate = bitrate;
             return string.Format("{0}{1}_{2}.m3u", Url, StationList.Find(x => x.Id == id).Prefix, bitrate);
         }
 

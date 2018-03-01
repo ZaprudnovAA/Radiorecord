@@ -13,6 +13,8 @@ namespace Radio
         private const string SoftwareKey = "Software";
         private const string ProgramDeveloperKey = "ZaprudnovAA";
         internal const string FavoriteStationName = "FavoriteStation";
+        internal const string FavoriteVolumeName = "FavoriteVolume";
+        internal const string FavoriteBitrateName = "FavoriteBitrate";
 
         public static void CreateSubKey()
         {
@@ -111,6 +113,16 @@ namespace Radio
         {
             Vars.WhoIsPlaying = id;
             RegistryWorker.SetValue(RegistryWorker.FavoriteStationName, id.ToString());
+        }
+
+        public static void SetFavoriteBitrate()
+        {
+            RegistryWorker.SetValue(RegistryWorker.FavoriteBitrateName, Vars.UsersBitrate.ToString());
+        }
+
+        public static void SetFavoriteVolume()
+        {
+            RegistryWorker.SetValue(RegistryWorker.FavoriteVolumeName, Vars.UsersVolume.ToString());
         }
 
     }

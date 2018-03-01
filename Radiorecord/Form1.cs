@@ -19,10 +19,12 @@ namespace Radio
             Show();
             WindowState = FormWindowState.Normal;
 
+            CheckFavoriteBitrate();
+
             Hook.KeyPressed += _hook_KeyPressed;
             Hook.SetHook();
 
-            _wmPlayer.settings.volume = 80;
+            _wmPlayer.settings.volume = Vars.UsersVolume;
             KeyPreview = true;
             label_volume.Text = Resources.Form1_trackBar1_Scroll_Volume_ + _wmPlayer.settings.volume;
             trackBar1.Value = _wmPlayer.settings.volume / 10;
@@ -78,6 +80,17 @@ namespace Radio
             }
         }
 
+        private void CheckFavoriteBitrate()
+        {
+            for (var i = 1; i <= 3; i++)
+            {
+                if (Vars.UsersBitrate == Convert.ToInt32(((RadioButton)Controls["radioButton" + i]).Text))
+                {
+                    ((RadioButton)Controls["radioButton" + i]).Checked = true;
+                }
+            }
+        }
+
         private void _hook_KeyPressed(object sender, KeyPressEventArgs e)
         {
             if (Visible)
@@ -109,7 +122,7 @@ namespace Radio
 
             if (Vars.WhoIsPlaying != id || (_wmPlayer.playState != WMPPlayState.wmppsPlaying && _wmPlayer.playState != WMPPlayState.wmppsPaused))
             {
-                var bitrate = Vars.DefaultBitrate;
+                var bitrate = Vars.UsersBitrate;
                 for (var i = 1; i <= 3; i++)
                 {
                     if (((RadioButton)Controls["radioButton" + i]).Checked)
@@ -124,6 +137,9 @@ namespace Radio
                 _wmPlayer.controls.play();
                 Funks.SetFavoriteStation(id);
                 Text = string.Format("{0} - {1} now playing", Vars.AName, Vars.StationList.Find(x => x.Id == id).Name);
+
+                Funks.SetFavoriteBitrate();
+                Funks.SetFavoriteVolume();
             }
             else
             {
@@ -182,6 +198,7 @@ namespace Radio
                     ((Button)Controls["button" + i]).FlatAppearance.BorderSize = 0;
                     ((Button)Controls["button" + i]).FlatAppearance.BorderColor = Color.White;
                     ((Button)Controls["button" + i]).FlatStyle = FlatStyle.Standard;
+                    ((Button)Controls["button" + i]).BackColor = Color.White;
                 }
 
                 if (id == null) return;
@@ -230,6 +247,10 @@ namespace Radio
         {
             label_volume.Text = Resources.Form1_trackBar1_Scroll_Volume_ + trackBar1.Value * 10;
             _wmPlayer.settings.volume = trackBar1.Value * 10;
+
+            Vars.UsersVolume = _wmPlayer.settings.volume;
+
+            Funks.SetFavoriteVolume();
         }
     }
 }

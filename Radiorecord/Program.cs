@@ -17,7 +17,7 @@ namespace Radio
             RegistryWorker.CreateSubKey();
             new Update().Check();
             Vars.ListOfStations();
-            Funks.PlayJingle();
+            //Funks.PlayJingle();
 
             var mutex = new Mutex(true, Vars.AName, out _mutexWasCreated);
             if (_mutexWasCreated)
