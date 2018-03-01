@@ -17,7 +17,6 @@ ipch
 *.idb
 *.vcxproj
 *.vcxproj.filters
-*.sln
 *.db
 *.bat
 [Dd]ebug*/
