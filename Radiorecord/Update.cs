@@ -13,8 +13,9 @@ namespace Radio
         //private const string Url = @"https://github.com/ZaprudnovAA/Radiorecord/tree/master/Release/";
         private const string Url = @"http://rosvel.ru/Radiorecord/";
         private static readonly string ProgramName = Application.ProductName + ".exe";
-        private readonly string _programNameNew = ProgramName + ".update";
+        private readonly string programNameNew = ProgramName + ".update";
         private const string UpdaterName = @"ZAAUniversalUpdaterConsole.exe";
+        private const string VersionFile = @"radiorecord_version.xml";
 
 
         public void Check()
@@ -26,30 +27,43 @@ namespace Radio
                     File.Delete(UpdaterName);
                 }
 
-                if (File.Exists(_programNameNew))
+                if (File.Exists(programNameNew))
                 {
-                    File.Delete(_programNameNew);
+                    File.Delete(programNameNew);
                 }
 
                 XmlDocument doc = new XmlDocument();
-                doc.Load(Url + "radiorecord_version.xml");
+                doc.Load(Url + VersionFile);
 
-                if (new Version(Application.ProductVersion) <
-                    new Version(doc.GetElementsByTagName("myprogram")[0].InnerText))
+                if (new Version(Application.ProductVersion) != new Version(doc.GetElementsByTagName("myprogram")[0].InnerText))
                 {
-                    var task0 = Task.Factory.StartNew(() => DownloadFile(UpdaterName));
-                    var task1 = Task.Factory.StartNew(() => DownloadFile(_programNameNew));
+                    Task.WaitAll(Task.Factory.StartNew(() => DownloadFile(UpdaterName + ".update")));
+                    Task.WaitAll(Task.Factory.StartNew(() => DownloadFile(programNameNew)));
 
-                    Task.WaitAll(task0, task1);
-
-                    if (File.Exists(_programNameNew) &&
-                        new Version(FileVersionInfo.GetVersionInfo(_programNameNew).FileVersion) >
-                        new Version(Application.ProductVersion))
+                    if (File.Exists(UpdaterName + ".update") && new FileInfo(UpdaterName + ".update").Length != 0)
                     {
+                        File.Move(UpdaterName + ".update", UpdaterName);
+                    }
+                    else
+                    {
+                        File.Delete(UpdaterName + ".update");
+                    }
 
+                    if (File.Exists(UpdaterName) && new FileInfo(UpdaterName).Length == 0)
+                    {
+                        File.Delete(UpdaterName);
+                    }
+
+                    if (File.Exists(UpdaterName) && new FileInfo(UpdaterName).Length != 0 && File.Exists(programNameNew) && new FileInfo(programNameNew).Length != 0)
+                    {
                         Process.Start(UpdaterName,
-                            "\"" + _programNameNew + "\" \"" + Application.ProductName + ".exe\"");
+                            "\"" + programNameNew + "\" \"" + Application.ProductName + ".exe\"");
                         Process.GetCurrentProcess().CloseMainWindow();
+                    }
+                    else
+                    {
+                        File.Delete(programNameNew);
+                        File.Delete(UpdaterName);
                     }
                 }
             }
@@ -73,6 +87,8 @@ namespace Radio
                         try
                         {
                             client.DownloadFileAsync(new Uri(Url + filename), filenamePath);
+
+                            while (client.IsBusy) { }
                         }
                         catch
                         {
