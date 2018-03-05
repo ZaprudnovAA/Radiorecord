@@ -37,6 +37,11 @@ namespace Radio
 
                 if (new Version(Application.ProductVersion) != new Version(doc.GetElementsByTagName("myprogram")[0].InnerText))
                 {
+                    if (MessageBox.Show(
+                            string.Format(
+                                "A new version of the program is detected. Would you like to update {0} to a more recent version right now?",
+                                Vars.AName), Vars.AName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes) return;
+
                     Task.WaitAll(Task.Factory.StartNew(() => DownloadFile(UpdaterName + ".update")));
                     Task.WaitAll(Task.Factory.StartNew(() => DownloadFile(programNameNew)));
 
@@ -54,7 +59,8 @@ namespace Radio
                         File.Delete(UpdaterName);
                     }
 
-                    if (File.Exists(UpdaterName) && new FileInfo(UpdaterName).Length != 0 && File.Exists(programNameNew) && new FileInfo(programNameNew).Length != 0)
+                    if (File.Exists(UpdaterName) && new FileInfo(UpdaterName).Length != 0 &&
+                        File.Exists(programNameNew) && new FileInfo(programNameNew).Length != 0)
                     {
                         Process.Start(UpdaterName,
                             "\"" + programNameNew + "\" \"" + Application.ProductName + ".exe\"");

@@ -66,7 +66,7 @@ namespace Radio
             // 
             this.label_volume.AutoSize = true;
             this.label_volume.BackColor = System.Drawing.Color.Transparent;
-            this.label_volume.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_volume.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.label_volume.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label_volume.Location = new System.Drawing.Point(839, 111);
             this.label_volume.Name = "label_volume";
@@ -113,7 +113,7 @@ namespace Radio
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label1.Location = new System.Drawing.Point(854, 28);
             this.label1.Name = "label1";
