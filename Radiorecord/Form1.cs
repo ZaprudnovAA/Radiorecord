@@ -153,8 +153,12 @@ namespace Radio
         {
             if (_wmPlayer.playState == WMPPlayState.wmppsPlaying)
             {
+                /*
                 _wmPlayer.controls.pause();
                 Text = string.Format("{0} - {1} is paused", Vars.AName, Vars.StationList.Find(x => x.Id == id).Name);
+                */
+                _wmPlayer.controls.stop();
+                Text = string.Format("{0} - {1} is stopped", Vars.AName, Vars.StationList.Find(x => x.Id == id).Name);
             }
             else
             {
