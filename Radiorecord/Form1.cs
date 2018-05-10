@@ -128,6 +128,11 @@ namespace Radio
                     if (((RadioButton)Controls["radioButton" + i]).Checked)
                     {
                         bitrate = Convert.ToInt32(((RadioButton)Controls["radioButton" + i]).Text);
+                        ((RadioButton)Controls["radioButton" + i]).BackColor = Color.Violet;
+                    }
+                    else
+                    {
+                        ((RadioButton)Controls["radioButton" + i]).BackColor = Color.Transparent;
                     }
 
                     ((RadioButton)Controls["radioButton" + i]).Enabled = false;

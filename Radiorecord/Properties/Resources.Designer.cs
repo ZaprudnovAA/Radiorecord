@@ -133,6 +133,16 @@ namespace Radio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap elect {
+            get {
+                object obj = ResourceManager.GetObject("elect", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fbass {
             get {
                 object obj = ResourceManager.GetObject("fbass", resourceCulture);
@@ -290,6 +300,26 @@ namespace Radio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mmbt {
+            get {
+                object obj = ResourceManager.GetObject("mmbt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mt {
+            get {
+                object obj = ResourceManager.GetObject("mt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap naft {
             get {
                 object obj = ResourceManager.GetObject("naft", resourceCulture);
@@ -320,9 +350,9 @@ namespace Radio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pump2 {
+        internal static System.Drawing.Bitmap rave {
             get {
-                object obj = ResourceManager.GetObject("pump2", resourceCulture);
+                object obj = ResourceManager.GetObject("rave", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -330,9 +360,9 @@ namespace Radio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap rave {
+        internal static System.Drawing.Bitmap record {
             get {
-                object obj = ResourceManager.GetObject("rave", resourceCulture);
+                object obj = ResourceManager.GetObject("record", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -392,6 +422,16 @@ namespace Radio.Properties {
         internal static System.Drawing.Bitmap sd90 {
             get {
                 object obj = ResourceManager.GetObject("sd90", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap symph {
+            get {
+                object obj = ResourceManager.GetObject("symph", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -462,16 +502,6 @@ namespace Radio.Properties {
         internal static System.Drawing.Bitmap yo {
             get {
                 object obj = ResourceManager.GetObject("yo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap yo2 {
-            get {
-                object obj = ResourceManager.GetObject("yo2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
