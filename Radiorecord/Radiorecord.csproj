@@ -150,6 +150,7 @@
     <Content Include="Resources\gop.png" />
     <Content Include="Resources\hbass.png" />
     <Content Include="Resources\ibiza.png" />
+    <Content Include="Resources\jackin.png" />
     <Content Include="Resources\mdl.png" />
     <Content Include="Resources\mf.png" />
     <Content Include="Resources\mini.png" />
@@ -157,6 +158,7 @@
     <Content Include="Resources\mmbt.png" />
     <Content Include="Resources\mt.png" />
     <Content Include="Resources\naft.png" />
+    <Content Include="Resources\progr.png" />
     <Content Include="Resources\ps.png" />
     <Content Include="Resources\pump.png" />
     <Content Include="Resources\rave.png" />

@@ -140,6 +140,8 @@ namespace Radio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.Height = SystemInformation.PrimaryMonitorSize.Height - 80;
             this.BackgroundImage = global::Radio.Properties.Resources.record;
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.CancelButton = this.button50;

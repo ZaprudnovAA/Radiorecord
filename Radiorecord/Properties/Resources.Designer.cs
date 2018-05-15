@@ -260,6 +260,16 @@ namespace Radio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap jackin {
+            get {
+                object obj = ResourceManager.GetObject("jackin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mdl {
             get {
                 object obj = ResourceManager.GetObject("mdl", resourceCulture);
@@ -323,6 +333,16 @@ namespace Radio.Properties {
         internal static System.Drawing.Bitmap naft {
             get {
                 object obj = ResourceManager.GetObject("naft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap progr {
+            get {
+                object obj = ResourceManager.GetObject("progr", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
