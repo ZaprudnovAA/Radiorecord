@@ -73,6 +73,16 @@ namespace Radio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bighits {
+            get {
+                object obj = ResourceManager.GetObject("bighits", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap brks {
             get {
                 object obj = ResourceManager.GetObject("brks", resourceCulture);
@@ -116,6 +126,16 @@ namespace Radio.Properties {
         internal static System.Drawing.Bitmap deep {
             get {
                 object obj = ResourceManager.GetObject("deep", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dream {
+            get {
+                object obj = ResourceManager.GetObject("dream", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,6 +263,16 @@ namespace Radio.Properties {
         internal static System.Drawing.Bitmap hbass {
             get {
                 object obj = ResourceManager.GetObject("hbass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap househits {
+            get {
+                object obj = ResourceManager.GetObject("househits", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -452,6 +482,16 @@ namespace Radio.Properties {
         internal static System.Drawing.Bitmap symph {
             get {
                 object obj = ResourceManager.GetObject("symph", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap synth {
+            get {
+                object obj = ResourceManager.GetObject("synth", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -15,7 +15,9 @@ namespace Radio
         private static void Main()
         {
             RegistryWorker.CreateSubKey();
+#if !DEBUG
             new Update().Check();
+#endif
             Vars.ListOfStations();
             //Funks.PlayJingle();
 

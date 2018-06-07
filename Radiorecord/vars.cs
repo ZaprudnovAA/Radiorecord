@@ -86,6 +86,10 @@ namespace Radio
             StationList.Add(new Stations { Id = 39, Prefix = "mmbt", Name = "Moombahton", Image = Resources.mmbt });
             StationList.Add(new Stations { Id = 40, Prefix = "jackin", Name = "Jackin'/Garage", Image = Resources.jackin });
             StationList.Add(new Stations { Id = 41, Prefix = "progr", Name = "Progressive", Image = Resources.progr });
+            StationList.Add(new Stations { Id = 42, Prefix = "househits", Name = "House Hits", Image = Resources.househits });
+            StationList.Add(new Stations { Id = 43, Prefix = "synth", Name = "Synthwave", Image = Resources.synth });
+            StationList.Add(new Stations { Id = 44, Prefix = "bighits", Name = "Big Hits", Image = Resources.bighits });
+            StationList.Add(new Stations { Id = 45, Prefix = "dream", Name = "Dream Dance", Image = Resources.dream });
         }
     }
 }

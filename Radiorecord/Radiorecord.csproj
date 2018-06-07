@@ -135,11 +135,13 @@
   <ItemGroup>
     <Content Include="075bed9cb6844ed19249ea35a2542e17.ico" />
     <Content Include="Resources\ansh.png" />
+    <Content Include="Resources\bighits.png" />
     <Content Include="Resources\brks.png" />
     <Content Include="Resources\chil.png" />
     <Content Include="Resources\club.png" />
     <Content Include="Resources\dc.png" />
     <Content Include="Resources\deep.png" />
+    <Content Include="Resources\dream.png" />
     <Content Include="Resources\dub.png" />
     <Content Include="Resources\elect.png" />
     <Content Include="Resources\fbass.png" />
@@ -149,6 +151,7 @@
     <Content Include="Resources\gold.png" />
     <Content Include="Resources\gop.png" />
     <Content Include="Resources\hbass.png" />
+    <Content Include="Resources\househits.png" />
     <Content Include="Resources\ibiza.png" />
     <Content Include="Resources\jackin.png" />
     <Content Include="Resources\mdl.png" />
@@ -169,6 +172,7 @@
     <Content Include="Resources\rus.png" />
     <Content Include="Resources\sd90.png" />
     <Content Include="Resources\symph.png" />
+    <Content Include="Resources\synth.png" />
     <Content Include="Resources\techno.png" />
     <Content Include="Resources\teo.png" />
     <Content Include="Resources\tm.png" />
