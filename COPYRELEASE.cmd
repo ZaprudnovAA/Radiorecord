@@ -3,5 +3,5 @@
 
 @echo off
 
-COPY /D /Y "%CD%\Radiorecord\bin\Release\Radiorecord.exe" "%CD%\Release\Radiorecord.exe"
-COPY /D /Y "%CD%\Radiorecord\bin\Release\Radiorecord.exe" "%CD%\Release\Radiorecord.exe.update"
+COPY /D /Y "%CD%\Radiorecord\bin\Release\Radiorecord.exe" "%CD%\Application\Radiorecord.exe"
+COPY /D /Y "%CD%\Radiorecord\bin\Release\Radiorecord.exe" "%CD%\Application\Radiorecord.exe.update"

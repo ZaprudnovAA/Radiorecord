@@ -29,6 +29,12 @@ namespace Radio
             label_volume.Text = Resources.Form1_trackBar1_Scroll_Volume_ + _wmPlayer.settings.volume;
             trackBar1.Value = _wmPlayer.settings.volume / 10;
 
+            if (Vars.WhoIsPlaying > Vars.StationList.Count)
+            {
+                Vars.WhoIsPlaying = 1;
+                Funks.SetFavoriteStation(Vars.WhoIsPlaying);
+            }
+
             StartPlay(Vars.WhoIsPlaying);
         }
 
@@ -141,7 +147,7 @@ namespace Radio
                 _wmPlayer.URL = Vars.radio_url_bitrate(bitrate, id);
                 _wmPlayer.controls.play();
                 Funks.SetFavoriteStation(id);
-                Text = string.Format("{0} - {1} now playing", Vars.AName, Vars.StationList.Find(x => x.Id == id).Name);
+                Text = $@"{Vars.AName} - {Vars.StationList.Find(x => x.Id == id).Name} now playing";
 
                 Funks.SetFavoriteBitrate();
                 Funks.SetFavoriteVolume();
@@ -158,17 +164,13 @@ namespace Radio
         {
             if (_wmPlayer.playState == WMPPlayState.wmppsPlaying)
             {
-                /*
-                _wmPlayer.controls.pause();
-                Text = string.Format("{0} - {1} is paused", Vars.AName, Vars.StationList.Find(x => x.Id == id).Name);
-                */
                 _wmPlayer.controls.stop();
-                Text = string.Format("{0} - {1} is stopped", Vars.AName, Vars.StationList.Find(x => x.Id == id).Name);
+                Text = $@"{Vars.AName} - {Vars.StationList.Find(x => x.Id == id).Name} is stopped";
             }
             else
             {
                 _wmPlayer.controls.play();
-                Text = string.Format("{0} - {1} now playing", Vars.AName, Vars.StationList.Find(x => x.Id == id).Name);
+                Text = $@"{Vars.AName} - {Vars.StationList.Find(x => x.Id == id).Name} now playing";
             }
 
             for (var i = 1; i <= 3; i++)
@@ -181,14 +183,13 @@ namespace Radio
 
         private void StartPlayer(object sender, EventArgs e)
         {
-            var btn = (Button)sender;
-            StartPlay(Convert.ToInt32(btn.TabIndex));
+            StartPlay(Convert.ToInt32(((Button)sender).TabIndex));
         }
 
         private void StopPlayer(object sender, EventArgs e)
         {
             _wmPlayer.controls.stop();
-            Text = string.Format("{0}", Vars.AName);
+            Text = $@"{Vars.AName}";
 
             for (var i = 1; i <= 3; i++)
             {
@@ -234,7 +235,7 @@ namespace Radio
             if (WindowState != FormWindowState.Minimized) return;
             Hide();
             notifyIcon1.Visible = true;
-            new Funks.AddNotifyUserDelegate(Funks.NotifyUser).BeginInvoke("Радио продолжит работать в трее.\n\rСтарт/Стоп проигрывания - Scroll Lock", null, null);
+            new Funks.AddNotifyUserDelegate(Funks.NotifyUser).BeginInvoke("The radio will continue to work in the tray.\n\rStart/Stop playback - Scroll Lock", null, null);
         }
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
@@ -248,7 +249,7 @@ namespace Radio
         {
             if (e.KeyCode == Keys.F1)
             {
-                MessageBox.Show(Resources.Form1_Form1_KeyDown_, Resources.Form1_Form1_KeyDown_микроHelp, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.Form1_Form1_KeyDown_, Resources.Form1_Form1_KeyDown_microHelp, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

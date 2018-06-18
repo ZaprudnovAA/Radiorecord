@@ -93,7 +93,7 @@ namespace Radio
         public static void NotifyUser(string message)
         {
             Program.F.notifyIcon1.Visible = true;
-            Program.F.notifyIcon1.ShowBalloonTip(Vars.NotifyTimeout, Vars.AName, string.Format("{0}\r\n", message), ToolTipIcon.Info);
+            Program.F.notifyIcon1.ShowBalloonTip(Vars.NotifyTimeout, Vars.AName, $"{message}\r\n", ToolTipIcon.Info);
             NotifyUserText.Clear();
         }
 
@@ -179,7 +179,7 @@ namespace Radio
             if (code < 0 || wParam != (IntPtr)WhKeydown || Marshal.ReadInt32(lParam) != _key)
                 return CallNextHookEx(_hHook, code, (int)wParam, lParam);
 
-            if (KeyPressed != null) KeyPressed.Invoke(this, new KeyPressEventArgs(Convert.ToChar(code)));
+            KeyPressed?.Invoke(this, new KeyPressEventArgs(Convert.ToChar(code)));
 
             return CallNextHookEx(_hHook, code, (int)wParam, lParam);
         }

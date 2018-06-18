@@ -40,7 +40,7 @@ namespace Radio
             this.radioButton2 = new RadioButton();
             this.radioButton3 = new RadioButton();
             this.label1 = new Label();
-            this.button50 = new Button();
+            this.button150 = new Button();
             ((ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,17 +124,17 @@ namespace Radio
             this.label1.TabIndex = 0;
             this.label1.Text = "Bitrate";
             // 
-            // button50
+            // button150
             // 
-            this.button50.BackColor = System.Drawing.Color.Transparent;
-            this.button50.DialogResult = DialogResult.Cancel;
-            this.button50.Location = new System.Drawing.Point(838, 0);
-            this.button50.Name = "button50";
-            this.button50.Size = new System.Drawing.Size(75, 24);
-            this.button50.TabIndex = 50;
-            this.button50.Text = "Stop all";
-            this.button50.UseVisualStyleBackColor = true;
-            this.button50.Click += new System.EventHandler(this.StopPlayer);
+            this.button150.BackColor = System.Drawing.Color.Transparent;
+            this.button150.DialogResult = DialogResult.Cancel;
+            this.button150.Location = new System.Drawing.Point(838, 0);
+            this.button150.Name = "button150";
+            this.button150.Size = new System.Drawing.Size(75, 24);
+            this.button150.TabIndex = 150;
+            this.button150.Text = "Stop all";
+            this.button150.UseVisualStyleBackColor = true;
+            this.button150.Click += new System.EventHandler(this.StopPlayer);
             // 
             // Form1
             // 
@@ -142,16 +142,16 @@ namespace Radio
             this.AutoScaleMode = AutoScaleMode.Font;
             this.AutoScroll = true;
             this.Height = SystemInformation.PrimaryMonitorSize.Height - 80;
-            this.BackgroundImage = global::Radio.Properties.Resources.record;
+            this.BackgroundImage = Properties.Resources.record;
             this.BackgroundImageLayout = ImageLayout.Stretch;
-            this.CancelButton = this.button50;
+            this.CancelButton = this.button150;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label_volume);
             this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.button50);
+            this.Controls.Add(this.button150);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(10, 10);
@@ -169,7 +169,7 @@ namespace Radio
         }
 
         #endregion
-        private Button button50;
+        private Button button150;
         public NotifyIcon notifyIcon1;
         private TrackBar trackBar1;
         private Label label_volume;

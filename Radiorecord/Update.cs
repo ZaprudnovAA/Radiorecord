@@ -10,12 +10,13 @@ namespace Radio
 {
     internal class Update
     {
-        //private const string Url = @"https://github.com/ZaprudnovAA/Radiorecord/tree/master/Release/";
-        private const string Url = @"http://rosvel.ru/Radiorecord/";
-        private static readonly string ProgramName = Application.ProductName + ".exe";
-        private readonly string programNameNew = ProgramName + ".update";
+        //public const string Url = @"https://github.com/ZaprudnovAA/Radiorecord/tree/master/Application/";
+        public const string Url = @"http://rosvel.ru/Radiorecord/";
+        private static readonly string ProgramName = $@"{Application.ProductName}.exe";
+        private readonly string _programNameNew = $@"{ProgramName}.update";
         private const string UpdaterName = @"ZAAUniversalUpdaterConsole.exe";
         private const string VersionFile = @"radiorecord_version.xml";
+        public const string StationsFile = @"radiorecord_stations.xml";
 
 
         public void Check()
@@ -27,9 +28,9 @@ namespace Radio
                     File.Delete(UpdaterName);
                 }
 
-                if (File.Exists(programNameNew))
+                if (File.Exists(_programNameNew))
                 {
-                    File.Delete(programNameNew);
+                    File.Delete(_programNameNew);
                 }
 
                 XmlDocument doc = new XmlDocument();
@@ -38,12 +39,10 @@ namespace Radio
                 if (new Version(Application.ProductVersion) != new Version(doc.GetElementsByTagName("myprogram")[0].InnerText))
                 {
                     if (MessageBox.Show(
-                            string.Format(
-                                "A new version of the program is detected. Would you like to update {0} to a more recent version right now?",
-                                Vars.AName), Vars.AName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes) return;
+                            $@"A new version of the program is detected. Would you like to update {Vars.AName} to a more recent version right now?", Vars.AName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) != DialogResult.Yes) return;
 
                     Task.WaitAll(Task.Factory.StartNew(() => DownloadFile(UpdaterName + ".update")));
-                    Task.WaitAll(Task.Factory.StartNew(() => DownloadFile(programNameNew)));
+                    Task.WaitAll(Task.Factory.StartNew(() => DownloadFile(_programNameNew)));
 
                     if (File.Exists(UpdaterName + ".update") && new FileInfo(UpdaterName + ".update").Length != 0)
                     {
@@ -60,15 +59,15 @@ namespace Radio
                     }
 
                     if (File.Exists(UpdaterName) && new FileInfo(UpdaterName).Length != 0 &&
-                        File.Exists(programNameNew) && new FileInfo(programNameNew).Length != 0)
+                        File.Exists(_programNameNew) && new FileInfo(_programNameNew).Length != 0)
                     {
                         Process.Start(UpdaterName,
-                            "\"" + programNameNew + "\" \"" + Application.ProductName + ".exe\"");
+                            "\"" + _programNameNew + "\" \"" + Application.ProductName + ".exe\"");
                         Process.GetCurrentProcess().CloseMainWindow();
                     }
                     else
                     {
-                        File.Delete(programNameNew);
+                        File.Delete(_programNameNew);
                         File.Delete(UpdaterName);
                     }
                 }

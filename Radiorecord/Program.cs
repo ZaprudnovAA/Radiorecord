@@ -18,21 +18,24 @@ namespace Radio
 #if !DEBUG
             new Update().Check();
 #endif
-            Vars.ListOfStations();
-            //Funks.PlayJingle();
+            if (Vars.ListOfStations())
+            {
+                //Funks.PlayJingle();
 
-            var mutex = new Mutex(true, Vars.AName, out _mutexWasCreated);
-            if (_mutexWasCreated)
-            {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                F = new Form1();
-                Application.Run(F);
-                return;
-            }
-            else
-            {
-                MessageBox.Show(string.Format("{0} is already running", Vars.AName), Vars.AName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                var mutex = new Mutex(true, Vars.AName, out _mutexWasCreated);
+                if (_mutexWasCreated)
+                {
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    F = new Form1();
+                    Application.Run(F);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show($@"{Vars.AName} is already running", Vars.AName, MessageBoxButtons.OK,
+                        MessageBoxIcon.Stop);
+                }
             }
         }
     }
