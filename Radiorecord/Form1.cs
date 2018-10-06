@@ -26,8 +26,8 @@ namespace Radio
 
             _wmPlayer.settings.volume = Vars.UsersVolume;
             KeyPreview = true;
-            label_volume.Text = Resources.Form1_trackBar1_Scroll_Volume_ + _wmPlayer.settings.volume;
-            trackBar1.Value = _wmPlayer.settings.volume / 10;
+            ((Label)Controls["labelVolume"]).Text = Resources.Form1_trackBar1_Scroll_Volume_ + _wmPlayer.settings.volume;
+            ((TrackBar)Controls["trackBar"]).Value = _wmPlayer.settings.volume / 10;
 
             if (Vars.WhoIsPlaying > Vars.StationList.Count)
             {
@@ -40,15 +40,16 @@ namespace Radio
 
         private void CreateButtons()
         {
-            const int buttonsInLine = 8;
-            const int buttonWidth = 104;
-            const int buttonHeight = 125;
+            const int buttonsInLine = 10;
+            const int buttonWidth = 95;
+            const int buttonHeight = 124;
+            int formWidth;
+            int formHeight;
             var lineBufer = 0;
             var elementNumber = 0;
 
             for (var id = 1; id < Vars.StationList.Count + 1; id++)
             {
-
                 var lineNumber = (id - 1) / buttonsInLine;
 
                 int rowPoint;
@@ -67,9 +68,11 @@ namespace Radio
 
                 var button = new Button
                 {
-                    BackColor = Color.Transparent,
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = Color.White,
                     BackgroundImage = Vars.StationList.Find(x => x.Id == id).Image,
                     BackgroundImageLayout = ImageLayout.Center,
+                    ImageAlign = ContentAlignment.MiddleCenter,
                     Location = new Point(rowPoint, lineNumber * buttonHeight),
                     Name = "button" + id,
                     Size = new Size(buttonWidth, buttonHeight),
@@ -78,11 +81,146 @@ namespace Radio
                     Visible = true,
                     TabStop = false
                 };
+
+                button.FlatAppearance.BorderSize = 1;
+                button.FlatAppearance.BorderColor = Color.Silver;
                 button.Click += StartPlayer;
-
+                button.MouseHover += Button_MouseHover;
                 Controls.Add(button);
+            }
 
-                ClientSize = new Size(921, (lineNumber + 1) * buttonHeight);
+            formWidth = buttonsInLine * buttonWidth;
+            formHeight = lineBufer * buttonHeight;
+
+            var buttonStop = new Button
+            {
+                BackColor = Color.Transparent,
+                DialogResult = DialogResult.Cancel,
+                Location = new Point(formWidth + 5, 0),
+                Name = "button150",
+                Size = new Size(75, 24),
+                TabIndex = elementNumber + 1,
+                Text = "Stop all",
+                UseVisualStyleBackColor = true
+            };
+            buttonStop.Click += new EventHandler(StopPlayer);
+            Controls.Add(buttonStop);
+
+            var labelVolume = new Label
+            {
+                AutoSize = true,
+                BackColor = Color.Transparent,
+                Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold),
+                ForeColor = SystemColors.ControlLightLight,
+                Location = new Point(formWidth + 5, 111),
+                Name = "labelVolume",
+                Size = new Size(73, 13),
+                TabIndex = 0,
+                Text = "Volume 100",
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+            var trackBar = new TrackBar
+            {
+                BackColor = SystemColors.Control,
+                Location = new Point(formWidth + 15, 131),
+                Name = "trackBar",
+                Orientation = Orientation.Vertical,
+                Size = new Size(45, 242),
+                TabIndex = 0,
+                TickStyle = TickStyle.TopLeft
+            };
+            trackBar.Scroll += trackBar1_Scroll;
+            Controls.Add(labelVolume);
+            Controls.Add(trackBar);
+
+            int radioPointHeight = 28;
+            var labelBitrate = new Label
+            {
+                AutoSize = true,
+                BackColor = Color.Transparent,
+                Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold),
+                ForeColor = SystemColors.ControlLightLight,
+                Location = new Point(formWidth + 5, radioPointHeight),
+                Name = "labelBitrate",
+                Size = new Size(44, 13),
+                TabIndex = 0,
+                Text = "Bitrate"
+            };
+            var radioButton1 = new RadioButton
+            {
+                AutoSize = true,
+                BackColor = Color.Transparent,
+                ForeColor = Color.White,
+                Location = new Point(formWidth + 15, radioPointHeight + 15),
+                Name = "radioButton1",
+                Size = new Size(37, 17),
+                TabIndex = 0,
+                Text = "64",
+                UseVisualStyleBackColor = false,
+                Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold)
+            };
+            var radioButton2 = new RadioButton
+            {
+                AutoSize = true,
+                BackColor = Color.Transparent,
+                ForeColor = Color.White,
+                Location = new Point(formWidth + 15, radioPointHeight + 15 + 18),
+                Name = "radioButton2",
+                Size = new Size(37, 17),
+                TabIndex = 0,
+                Text = "128",
+                UseVisualStyleBackColor = false,
+                Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold)
+            };
+            var radioButton3 = new RadioButton
+            {
+                AutoSize = true,
+                BackColor = Color.Transparent,
+                ForeColor = Color.White,
+                Location = new Point(formWidth + 15, radioPointHeight + 15 + 18 + 18),
+                Name = "radioButton3",
+                Size = new Size(37, 17),
+                TabIndex = 0,
+                Text = "320",
+                UseVisualStyleBackColor = false,
+                Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold)
+            };
+            Controls.Add(labelBitrate);
+            Controls.Add(radioButton1);
+            Controls.Add(radioButton2);
+            Controls.Add(radioButton3);
+
+            formWidth = formWidth + 5 + 75 + 5;
+
+            ClientSize = new Size(formWidth, formHeight);
+            CancelButton = buttonStop;
+        }
+
+        private void Button_MouseHover(object sender, EventArgs e)
+        {
+            if (sender.GetType().Name == "Button")
+            {
+                Button but = new Button();
+                but = (Button)sender;
+
+                for (var i = 1; i <= Vars.StationList.Count; i++)
+                {
+                    string butName = "button" + i;
+
+                    if (butName != "button" + Vars.WhoIsPlaying)
+                    {
+                        if (butName != but.Name)
+                        {
+                            ((Button)Controls[butName]).FlatAppearance.BorderSize = 1;
+                            ((Button)Controls[butName]).FlatAppearance.BorderColor = Color.Silver;
+                        }
+                        else
+                        {
+                            ((Button)Controls[butName]).FlatAppearance.BorderSize = 2;
+                            ((Button)Controls[butName]).FlatAppearance.BorderColor = Color.Tomato;
+                        }
+                    }
+                }
             }
         }
 
@@ -201,24 +339,12 @@ namespace Radio
 
         private void ActivateDeactivateButtons(int? id = null)
         {
-            try
-            {
-                for (var i = 1; i <= Vars.StationList.Count; i++)
-                {
-                    ((Button)Controls["button" + i]).FlatAppearance.BorderSize = 0;
-                    ((Button)Controls["button" + i]).FlatAppearance.BorderColor = Color.White;
-                    ((Button)Controls["button" + i]).FlatStyle = FlatStyle.Standard;
-                    ((Button)Controls["button" + i]).BackColor = Color.White;
-                }
+            if (id == null) return;
 
-                if (id == null) return;
-                ((Button)Controls["button" + id]).FlatAppearance.BorderSize = 4;
-                ((Button)Controls["button" + id]).FlatAppearance.BorderColor = Color.CadetBlue;
-                ((Button)Controls["button" + id]).FlatStyle = FlatStyle.Flat;
-            }
-            catch
+            for (var i = 1; i <= Vars.StationList.Count; i++)
             {
-                // ignored
+                ((Button)Controls["button" + i]).FlatAppearance.BorderSize = i != id ? 1 : 6;
+                ((Button)Controls["button" + i]).FlatAppearance.BorderColor = i != id ? Color.Silver : Color.Tomato;
             }
         }
 
@@ -255,8 +381,8 @@ namespace Radio
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            label_volume.Text = Resources.Form1_trackBar1_Scroll_Volume_ + trackBar1.Value * 10;
-            _wmPlayer.settings.volume = trackBar1.Value * 10;
+            ((Label)Controls["labelVolume"]).Text = Resources.Form1_trackBar1_Scroll_Volume_ + ((TrackBar)Controls["trackBar"]).Value * 10;
+            _wmPlayer.settings.volume = ((TrackBar)Controls["trackBar"]).Value * 10;
 
             Vars.UsersVolume = _wmPlayer.settings.volume;
 
