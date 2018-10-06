@@ -9,3 +9,5 @@ Happy listening to your favorite radio `Radiorecord` ;)
 Original radio is located in `http://www.radiorecord.ru/`.
 
 With regards, your ZaprudnovAA.
+
+!["Radiorecord"](https://github.com/ZaprudnovAA/Radiorecord/blob/master/Radiorecord/075bed9cb6844ed19249ea35a2542e17.ico?raw=true "Radiorecord")
